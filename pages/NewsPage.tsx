@@ -1,0 +1,39 @@
+
+import React from 'react';
+import Hero from '../components/Hero';
+import CallToAction from '../components/CallToAction';
+import { useLanguage } from '../contexts/LanguageContext';
+import { usePageMetadata } from '../hooks/usePageMetadata';
+
+const NewsPage: React.FC = () => {
+  const { t } = useLanguage();
+
+  usePageMetadata({
+    title: t('newsMetaTitle'),
+    description: t('newsMetaDescription'),
+  });
+
+  return (
+    <div>
+      <Hero 
+        title={t('newsHeroTitle')} 
+        subtitle={t('newsHeroSubtitle')} 
+        imageUrl="https://picsum.photos/1600/400?random=news" 
+      />
+      <div className="bg-white py-20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-brand-dark-blue text-center mb-10">{t('newsContentTitle')}</h2>
+            <div className="text-center text-lg text-brand-gray p-8 border-2 border-dashed border-gray-300 rounded-lg">
+              <p>{t('newsContentPlaceholder')}</p>
+            </div>
+            {/* Future content will be mapped here */}
+          </div>
+        </div>
+      </div>
+      <CallToAction />
+    </div>
+  );
+};
+
+export default NewsPage;
